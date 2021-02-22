@@ -1,12 +1,12 @@
 import React from 'react'
 
-const CourseRow = () =>
+const CourseRow = ({course, deleteCourse}) =>
     <tr>
-        <td>CS5610</td>
-        <td>me</td>
-        <td>1/1/2020</td>
+        <td>{course.title}</td>
+        <td>{course.owner}</td>
+        <td>{course.lastModified}</td>
         <td>
-            <i className="fas fa-trash"></i>
+            <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
             <i className="fas fa-edit"></i>
             <i className="fas fa-check"></i>
         </td>
