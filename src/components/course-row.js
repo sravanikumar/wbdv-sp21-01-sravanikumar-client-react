@@ -82,9 +82,9 @@ const CourseRow = (
             {course.lastModified}
         </div>
         <div className="list-group-item course-item-right col">
-            <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right"></i>
-            {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right"></i>}
-            {editing && <i onClick={() => saveFields()} className="fas fa-check float-right"></i>}
+            <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right icon-margins"></i>
+            {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right icon-margins"></i>}
+            {editing && <i onClick={() => saveFields()} className="fas fa-check float-right icon-margins"></i>}
         </div>
     </li>
 

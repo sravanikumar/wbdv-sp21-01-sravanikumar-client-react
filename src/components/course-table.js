@@ -27,13 +27,13 @@ export default class CourseTable extends React.Component {
                         </div>
                         <div className="col">
                             <Link to="/courses/grid">
-                                <i className="fas fa-2x fa-th float-right"></i>
+                                <i className="fas fa-2x fa-th float-right icon-margins"></i>
                             </Link>
                             <a href="#">
-                                <i className="fa fa-folder fa-2x float-right" />
+                                <i className="fa fa-folder fa-2x float-right icon-margins" />
                             </a>
                             <a href="#">
-                                <i className="fa fa-sort fa-2x float-right" />
+                                <i className="fa fa-sort fa-2x float-right icon-margins" />
                             </a>
 
                         </div>

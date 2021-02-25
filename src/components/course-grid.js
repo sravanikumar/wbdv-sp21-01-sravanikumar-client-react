@@ -23,13 +23,13 @@ const CourseGrid = ({courses, deleteCourse, updateCourse}) =>
 
                     <div className="col">
                         <Link to="/courses/table">
-                            <i className="fas fa-2x fa-list float-right"></i>
+                            <i className="fas fa-2x fa-list float-right icon-margins"></i>
                         </Link>
                         <a href="#">
-                            <i className="fa fa-folder fa-2x float-right" />
+                            <i className="fa fa-folder fa-2x float-right icon-margins" />
                         </a>
                         <a href="#">
-                            <i className="fa fa-sort fa-2x float-right" />
+                            <i className="fa fa-sort fa-2x float-right icon-margins" />
                         </a>
 
                     </div>
