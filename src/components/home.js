@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, Route} from "react-router-dom";
-import CourseManager from "./course-manager";
+import CourseManager from "./course-manager/course-manager";
 
 export default () =>
     <div>

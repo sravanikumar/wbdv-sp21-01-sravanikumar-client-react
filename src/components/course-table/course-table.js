@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseRow from "./course-row";
 import {Link} from "react-router-dom";
-import "./course-manager.css"
+import "../course-manager/course-manager.css"
 
 export default class CourseTable extends React.Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import './App.css';
-import CourseManager from "./components/course-manager";
+import CourseManager from "./components/course-manager/course-manager";
 import Home from "./components/home"
 import {BrowserRouter, Route} from "react-router-dom";
-import CourseEditor from "./components/course-editor";
+import CourseEditor from "./components/course-editor/course-editor";
 
 function App() {
   return (
