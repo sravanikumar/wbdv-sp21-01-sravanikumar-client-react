@@ -23,7 +23,7 @@ const CourseTopBar = ({addCourse}) =>
             <div className="container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div className="container">
-                        <div className="col-sm-1">
+                        <div className="col-1">
                             <Link to="/">
                                 <i className="fa fa-bars fa-2x icon-dark" />
                             </Link>
@@ -33,13 +33,13 @@ const CourseTopBar = ({addCourse}) =>
                                 Course Manager
                             </a>
                         </div>
-                        <div className="col-sm-8">
+                        <div className="col-8">
                             <input
                                 onChange={(event) => setNewTitle(event.target.value)}
                                 value={newTitle}
                                 className="form-control"/>
                         </div>
-                        <div className="col-sm-1">
+                        <div className="col-1">
                             <a href="#">
                                 <i className="float-right far fa-plus-square fa-2x icon-dark right-align"
                                    onClick={saveFields}
