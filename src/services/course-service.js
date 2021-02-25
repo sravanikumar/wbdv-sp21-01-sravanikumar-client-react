@@ -30,11 +30,10 @@ export const updateCourse = (courseId,course) =>
     })
         .then(response => response.json())
 
-const api = {
-    findAllCourses: findAllCourses,
-    deleteCourse: deleteCourse,
+export default {
+    findAllCourses,
+    deleteCourse,
     createCourse,
     updateCourse
 }
 
-export default api;

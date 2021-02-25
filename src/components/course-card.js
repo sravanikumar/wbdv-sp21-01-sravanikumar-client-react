@@ -1,17 +1,56 @@
-import React from 'react'
-import {deleteCourse} from "../services/course-service";
+import React, {useState} from 'react'
+import {Link} from "react-router-dom";
 
-const CourseCard = ({course, deleteCourse}) =>
-    <div className="col-4">
-        <div className="card">
-            <div className="card-body">
-                <h5 className="card-title">{course.title}</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-                <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
+
+
+const CourseCard = (
+    {
+        course,
+        deleteCourse,
+        updateCourse
+    }) => {
+    const [editing, setEditing] = useState(false)
+    const [newTitle, setNewTitle] = useState(course.title)
+
+    const saveFields = () => {
+        setEditing(false)
+        const newCourse = {
+            ...course,
+            title: newTitle,
+            lastModified: new Date(Date.now()).toDateString()
+        }
+        updateCourse(newCourse)
+    }
+
+    return(
+            <div className="col-4">
+                <div className="card">
+                    <div className="card-body">
+                            {
+                                !editing && <h5 className="card-title">{course.title}</h5>
+                            }
+                            {
+                                editing &&
+                                <h5 className="card-title">
+                                    <input
+                                    onChange={(event) => setNewTitle(event.target.value)}
+                                    value={newTitle}
+                                    className="form-control"/>
+                                </h5>
+                            }
+
+                        <p className="card-text">Some description.</p>
+
+                        <Link to="/courses/editor" className="btn btn-primary">
+                            {course.title}
+                        </Link>
+                        <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right"></i>
+                        {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right"></i>}
+                        {editing && <i onClick={() => saveFields()} className="fas fa-check float-right"></i>}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+    )
+}
 
 export default CourseCard
