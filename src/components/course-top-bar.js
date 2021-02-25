@@ -16,6 +16,9 @@ const CourseTopBar = ({addCourse}) =>
                 lastModified: new Date(Date.now()).toDateString()
             }
             addCourse(newCourse)
+            Array.from(document.querySelectorAll("input")).forEach(
+                input => (input.value = "")
+            );
             setNewTitle("")
         }
 
@@ -42,7 +45,7 @@ const CourseTopBar = ({addCourse}) =>
                         <div className="col-1">
                             <a href="#">
                                 <i className="float-right far fa-plus-square fa-2x icon-dark right-align"
-                                   onClick={saveFields}
+                                   onClick={() => saveFields()}
                                    type={"submit"}/>
                             </a>
                         </div>
