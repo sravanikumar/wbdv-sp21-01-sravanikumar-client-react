@@ -1,0 +1,24 @@
+.icon-dark {
+    color : floralwhite;
+}
+
+.course-background-light {
+    background-color: floralwhite;
+}
+
+.right-align {
+    float : right;
+}
+
+.course-item-middle {
+    border-right-style: hidden;
+    border-left-style: hidden;
+}
+
+.course-item-left {
+    border-right-style: hidden;
+}
+
+.course-item-right {
+    border-left-style: hidden;
+}

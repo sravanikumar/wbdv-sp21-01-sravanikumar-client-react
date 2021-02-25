@@ -3,8 +3,9 @@ import {Link, Route} from "react-router-dom";
 import CourseEditor from "./course-editor";
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import CourseTopBar from "./course-top-bar"
 import courseService from "../services/course-service";
-
+import "./course-manager.css"
 
 export default class CourseManager extends React.Component {
     state = {
@@ -57,10 +58,8 @@ export default class CourseManager extends React.Component {
     render() {
         return(
             <div>
-                <Link to="/home">
-                    <i className="fas fa-2x fa-home float-right"></i>
-                </Link>
-                <h1>Course Manager</h1>
+                <CourseTopBar/>
+
                 <button
                     onClick={this.addCourse}>
                     Add Course
@@ -77,7 +76,7 @@ export default class CourseManager extends React.Component {
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                {/*<Route path="/courses/editor"*/}
+                {/*<Route path="/courses/editor" exact={true}*/}
                 {/*       render={(props) => <CourseEditor {...props}/>}>*/}
                 {/*</Route>*/}
             </div>

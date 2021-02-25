@@ -11,8 +11,7 @@ function App() {
               <Route path="/" exact={true}>
                   <Home/>
               </Route>
-              <Route path={["/courses", "/courses/table", "/courses/grid"]}
-                     exact={true}>
+              <Route path={["/courses", "/courses/table", "/courses/grid"]} exact={true}>
                   <CourseManager/>
               </Route>
               <Route path="/courses/editor"
