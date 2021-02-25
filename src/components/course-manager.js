@@ -16,19 +16,21 @@ export default class CourseManager extends React.Component {
         courseService.findAllCourses()
             .then(courses => this.setState({courses}))
 
-    addCourse = () => {
-        const newCourse = {
-            title: "New Course",
-            owner: "New Owner",
-            lastModified: "Never"
-        }
+    addCourse = (newCourse) => {
+        // const newCourse = {
+        //     title: course.title,
+        //     owner: course.owner,
+        //     lastModified: course.lastModified
+        // }
         courseService.createCourse(newCourse)
             .then(course => this.setState(
                 (prevState) => ({
                     ...prevState,
                     courses: [
+
                         ...prevState.courses,
                         course
+
                     ]
                 })))
     }
@@ -57,13 +59,8 @@ export default class CourseManager extends React.Component {
 
     render() {
         return(
-            <div>
-                <CourseTopBar/>
-
-                <button
-                    onClick={this.addCourse}>
-                    Add Course
-                </button>
+            <div className="container-fluid course-background-light">
+                <CourseTopBar addCourse={this.addCourse}/>
                 <Route path={["/courses", "/courses/table"]} exact={true}>
                     <CourseTable
                         updateCourse={this.updateCourse}
