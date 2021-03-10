@@ -17,7 +17,7 @@ const EditableItem = (
                 !editing &&
                 <>
                     <Link to={to}>
-                        {item.title}
+                        <span className="nav-font-dark">{item.title}</span>
                     </Link>
                     <i onClick={() => setEditing(true)} className="fas fa-edit nav-font-dark fa-pull-right"></i>
                 </>
@@ -32,12 +32,12 @@ const EditableItem = (
                     <i onClick={() => {
                         setEditing(false)
                         updateItem(itemCache)
-                    }} className="fas fa-check"></i>
+                    }} className="fas fa-check nav-font-dark"></i>
 
                     <i onClick={() => {
                         setEditing(false)
                         deleteItem(item)
-                    }} className="fas fa-times"></i>
+                    }} className="fas fa-times nav-font-dark"></i>
                 </>
             }
         </>

@@ -17,14 +17,12 @@ const ModuleList = (
                 modules.map(module =>
                     // nav-item-editor-active
                     <li className="nav-item nav-item-editor">
-                        <EditableItem
-                            item={module}
-                            updateItem={updateModule}
-                            deleteItem={deleteModule}/>
-                        {/*<a className="nav-link nav-font-dark" aria-current="page" href="#">*/}
-                        {/*    {module.title}*/}
-                        {/*</a>*/}
-                        {/*<i className="fa-pull-right nav-font-dark fa fa-times" />*/}
+                        <a className="nav-link nav-font-dark" aria-current="page" href="#">
+                            <EditableItem
+                                item={module}
+                                updateItem={updateModule}
+                                deleteItem={deleteModule}/>
+                        </a>
                     </li>
                 )
             }
