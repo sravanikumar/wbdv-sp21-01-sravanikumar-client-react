@@ -1,5 +1,5 @@
 import React from 'react'
-import "./course-editor.css"
+import "../custom-styling.css"
 import moduleReducer from "../../reducers/module-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";

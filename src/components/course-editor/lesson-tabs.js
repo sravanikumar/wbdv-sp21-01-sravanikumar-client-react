@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import "./course-editor.css"
+import "../custom-styling.css"
+import EditableItem from "../editable-item";
 
 const LessonTabs = (
     {
@@ -10,6 +11,7 @@ const LessonTabs = (
             {
                 lessons.map(lesson =>
                     <li className="nav-item">
+                        {/*<EditableItem item={lesson}/>*/}
                         <a className="nav-link nav-font-dark" aria-current="page" href="#">
                             {lesson.title}
                         </a>

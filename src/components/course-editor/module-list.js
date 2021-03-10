@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import "./course-editor.css"
+import "../custom-styling.css"
+import EditableItem from "../editable-item";
 
 const ModuleList = (
     {
@@ -14,10 +15,11 @@ const ModuleList = (
                 modules.map(module =>
                     // nav-item-editor-active
                     <li className="nav-item nav-item-editor">
-                        <a className="nav-link nav-font-dark" aria-current="page" href="#">
-                            {module.title}
-                        </a>
-                        <i className="pull-right nav-font-dark fa fa-times" />
+                        <EditableItem item={module}/>
+                        {/*<a className="nav-link nav-font-dark" aria-current="page" href="#">*/}
+                        {/*    {module.title}*/}
+                        {/*</a>*/}
+                        {/*<i className="fa-pull-right nav-font-dark fa fa-times" />*/}
                     </li>
                 )
             }
