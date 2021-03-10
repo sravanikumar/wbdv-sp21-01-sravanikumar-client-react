@@ -1,11 +1,18 @@
 import React from 'react'
 import "./course-editor.css"
 import moduleReducer from "../../reducers/module-reducer";
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
+import lessonReducer from "../../reducers/lesson-reducer";
+import LessonTabs from "./lesson-tabs";
 
-const store = createStore(moduleReducer)
+const reducer = combineReducers({
+    moduleReducer: moduleReducer,
+    lessonReducer: lessonReducer
+})
+
+const store = createStore(reducer)
 
 const CourseEditor = ({history}) =>
     <Provider store={store}>
@@ -13,51 +20,17 @@ const CourseEditor = ({history}) =>
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container nav-font-dark">
-                        <div className="col-2">
-                            <i onClick={() => history.goBack()}
-                               className="fas fa-times float-right"></i>
-                        </div>
-                        <div className="col-2">
-                            <h4 className="pull-left">Course Name</h4>
-                        </div>
-                        <div className="col-8">
-                            <ul className="nav nav-tabs">
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" aria-current="page" href="#">
-                                        Build
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link active nav-font-dark" href="#">
-                                        Pages
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" href="#">
-                                        Theme
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" href="#">
-                                        Store
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" href="#">
-                                        Apps
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" href="#">
-                                        Settings
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link nav-font-dark" href="#">
-                                        <i className="fa fa-plus" />
-                                    </a>
-                                </li>
-                            </ul>
+                        <div className="row">
+                            <div className="col-2">
+                                <i onClick={() => history.goBack()}
+                                   className="fas fa-times float-right"></i>
+                            </div>
+                            <div className="col-2">
+                                <h4 className="pull-left">Course Name</h4>
+                            </div>
+                            <div className="col-8">
+                                <LessonTabs/>
+                            </div>
                         </div>
                     </div>
                 </nav>

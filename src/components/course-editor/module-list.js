@@ -2,7 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import "./course-editor.css"
 
-const ModuleList = ({modules = []}) =>
+const ModuleList = (
+    {
+        modules = [],
+        createModule
+    }) =>
     <div>
         {/*<h2>Module List</h2>*/}
         <ul className="nav flex-sm-column nav-pills nav-justified">
@@ -17,13 +21,22 @@ const ModuleList = ({modules = []}) =>
                     </li>
                 )
             }
+            <li className="nav-item nav-item-editor">
+                <a className="nav-link nav-font-dark" aria-current="page" href="#">
+                    <i onClick={createModule} className="fa fa-plus" />
+                </a>
+            </li>
         </ul>
     </div>
 
 const stpm = (state) => ({
-  modules: state.modules
+  modules: state.moduleReducer.modules
 })
 
-const dtpm = (dispatch) => {}
+const dtpm = (dispatch) => ({
+    createModule: () => {
+        dispatch({type: "CREATE_MODULE"})
+    }
+})
 
 export default connect(stpm, dtpm)(ModuleList)
