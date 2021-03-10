@@ -6,7 +6,9 @@ import EditableItem from "../editable-item";
 const ModuleList = (
     {
         modules = [],
-        createModule
+        createModule,
+        updateModule,
+        deleteModule
     }) =>
     <div>
         {/*<h2>Module List</h2>*/}
@@ -15,7 +17,10 @@ const ModuleList = (
                 modules.map(module =>
                     // nav-item-editor-active
                     <li className="nav-item nav-item-editor">
-                        <EditableItem item={module}/>
+                        <EditableItem
+                            item={module}
+                            updateItem={updateModule}
+                            deleteItem={deleteModule}/>
                         {/*<a className="nav-link nav-font-dark" aria-current="page" href="#">*/}
                         {/*    {module.title}*/}
                         {/*</a>*/}
@@ -38,6 +43,12 @@ const stpm = (state) => ({
 const dtpm = (dispatch) => ({
     createModule: () => {
         dispatch({type: "CREATE_MODULE"})
+    },
+    updateModule: (newItem) => {
+        dispatch({type: "UPDATE_MODULE", updatedModule: newItem})
+    },
+    deleteModule: (moduleToDelete) => {
+        dispatch({type: "DELETE_MODULE", moduleToDelete: moduleToDelete})
     }
 })
 

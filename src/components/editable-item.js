@@ -28,15 +28,21 @@ const EditableItem = (
                     <input
                         onChange={(e) => setItemCache({...itemCache, title: e.target.value})}
                         value={itemCache.title}/>
+
                     <i onClick={() => {
                         setEditing(false)
-                        // updateItem(itemCache)
+                        updateItem(itemCache)
                     }} className="fas fa-check"></i>
-                    <i onClick={() => deleteItem(item)} className="fas fa-times"></i>
+
+                    <i onClick={() => {
+                        setEditing(false)
+                        deleteItem(item)
+                    }} className="fas fa-times"></i>
                 </>
             }
         </>
     )
 }
+
 
 export default EditableItem
