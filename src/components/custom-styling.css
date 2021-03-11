@@ -6,6 +6,10 @@
     background-color: aliceblue;
 }
 
+.black-background {
+    background-color: black;
+}
+
 .nav-font-dark {
     color : white;
 }

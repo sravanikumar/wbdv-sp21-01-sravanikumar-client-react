@@ -10,10 +10,10 @@ const LessonTabs = (
         deleteLesson,
         createLesson
     }) =>
-        <ul className="nav nav-tabs">
+        <ul className="nav nav-tabs black-background">
             {
                 lessons.map(lesson =>
-                    <li className="nav-item">
+                    <li className="nav-item ">
                         <a className="nav-link nav-font-dark" aria-current="page" href="#">
                             <EditableItem
                                 item={lesson}
