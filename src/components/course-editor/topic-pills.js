@@ -15,14 +15,14 @@ const TopicPills = (
     return (<ul className="nav nav-pills">
         {
             topics.map(topic =>
-                <li className="nav-item">
-                    <a className="nav-link nav-font-dark nav-pills-editor-active" aria-current="page" href="#">
+                <li className="nav-item" key={topic._id}>
+                    <span className="nav-link nav-font-dark nav-pills-editor-active" aria-current="page" href="#">
                         <EditableItem
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                             item={topic}
                             deleteItem={deleteTopic}
                             updateItem={updateTopic}/>
-                    </a>
+                    </span>
                 </li>
             )
         }

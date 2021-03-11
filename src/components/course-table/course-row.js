@@ -55,7 +55,7 @@ const CourseRow = (
         {/*    </td>*/}
         {/*</tr>*/}
 
-    <li className="list-group list-group-horizontal">
+    <li className="list-group list-group-horizontal" key={course._id}>
         <div className="list-group-item course-item-left col">
             {
                 !editing &&

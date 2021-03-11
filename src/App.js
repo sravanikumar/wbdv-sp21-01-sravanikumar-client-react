@@ -14,7 +14,8 @@ function App() {
               <Route path={["/courses", "/courses/table", "/courses/grid"]} exact={true}>
                   <CourseManager/>
               </Route>
-              <Route path={["/courses/:layout/edit/:courseId",
+              <Route path={["/courses/:layout/edit",
+                            "/courses/:layout/edit/:courseId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"

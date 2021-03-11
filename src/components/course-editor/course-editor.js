@@ -1,5 +1,5 @@
-import React from 'react'
-import {useParams} from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import {Link, useParams} from 'react-router-dom'
 import "../custom-styling.css"
 import moduleReducer from "../../reducers/module-reducer";
 import {combineReducers, createStore} from "redux";
@@ -9,6 +9,7 @@ import lessonReducer from "../../reducers/lesson-reducer";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
+import courseService from "../../services/course-service"
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -20,18 +21,26 @@ const store = createStore(reducer)
 
 const CourseEditor = ({history, params}) => {
     const {layout, courseId, moduleId, lessonId, topicId} = useParams()
+    const [title, setTitle] = useState('')
+    useEffect(() => {
+        courseService.findCourseById(courseId)
+            .then(course => setTitle(course.title))
+    })
 
     return (<Provider store={store}>
         <div>
             <div>
                 <div className="row black-background nav-font-dark">
                     <div className="col-4">
-                        <i onClick={() => history.goBack()}
-                           className="fas fa-times fa-2x"></i>
+                        <Link to={`/courses/${layout}`}>
+                            <i className="fas fa-times fa-2x nav-font-dark"></i>
+                        {/*    onClick={() => history.goBack()}*/}
+                        </Link>
                     </div>
                     <div className="col-8">
                         <h3 className="pull-left">
-                            Course Name {layout} {courseId}
+                            {/*Course Name*/}
+                            {title}
                         </h3>
                     </div>
                 </div>

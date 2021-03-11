@@ -1,37 +1,44 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import "../custom-styling.css"
 import EditableItem from "../editable-item";
 import {useParams} from 'react-router-dom'
+import moduleService from "../../services/module-service";
 
 const ModuleList = (
     {
         modules = [],
         createModule,
         updateModule,
-        deleteModule
+        deleteModule,
+        findModulesForCourse
     }) => {
-    const {layout, courseId, moduleId, lessonId, topicId} = useParams()
+    const {layout, courseId, moduleId} = useParams()
+
+    useEffect(() => {
+        findModulesForCourse(courseId)
+    }, [courseId])
+
     return (<div>
-        {/*<h2>Module List</h2>*/}
         <ul className="nav flex-sm-column nav-pills nav-justified">
             {
                 modules.map(module =>
-                    // nav-item-editor-active
-                    <li className="nav-item nav-item-editor">
-                        <a className="nav-link nav-font-dark" aria-current="page" href="#">
+                    <li className={`nav-item nav-item-editor ${module._id === moduleId ? 'nav-item-editor-active' : ''}`}
+                        key={module._id}>
+                        <span className="nav-link nav-font-dark"
+                              aria-current="page">
                             <EditableItem
                                 to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                                 item={module}
                                 updateItem={updateModule}
                                 deleteItem={deleteModule}/>
-                        </a>
+                        </span>
                     </li>
                 )
             }
             <li className="nav-item nav-item-editor">
-                <a className="nav-link nav-font-dark" aria-current="page" href="#">
-                    <i onClick={createModule} className="fa fa-plus"/>
+                <a className="nav-link nav-font-dark" aria-current="page">
+                    <i onClick={() => createModule(courseId)} className="fa fa-plus"/>
                 </a>
             </li>
         </ul>
@@ -43,14 +50,24 @@ const stpm = (state) => ({
 })
 
 const dtpm = (dispatch) => ({
-    createModule: () => {
-        dispatch({type: "CREATE_MODULE"})
+    createModule: (courseId) => {
+        moduleService.createModule(courseId, {title: "New Module"})
+            .then(module => dispatch({type: "CREATE_MODULE", module: module}))
     },
     updateModule: (newItem) => {
-        dispatch({type: "UPDATE_MODULE", updatedModule: newItem})
+        moduleService.updateModule(newItem._id, newItem)
+            .then(status => dispatch({type: "UPDATE_MODULE", updatedModule: newItem}))
     },
     deleteModule: (moduleToDelete) => {
-        dispatch({type: "DELETE_MODULE", moduleToDelete: moduleToDelete})
+        moduleService.deleteModule(moduleToDelete._id)
+            .then(status => dispatch({type: "DELETE_MODULE", moduleToDelete: moduleToDelete}))
+    },
+    findModulesForCourse: (courseId) => {
+        moduleService.findModulesForCourse(courseId)
+            .then(modules => dispatch({
+                type: "FIND_MODULES_FOR_COURSE",
+                modules: modules
+            }))
     }
 })
 
