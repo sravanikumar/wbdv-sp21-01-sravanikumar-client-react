@@ -10,11 +10,11 @@ const LessonTabs = (
         deleteLesson,
         createLesson
     }) =>
-        <ul className="nav nav-tabs black-background">
+        <ul className="nav nav-tabs">
             {
                 lessons.map(lesson =>
-                    <li className="nav-item ">
-                        <a className="nav-link nav-font-dark" aria-current="page" href="#">
+                    <li className="nav-item">
+                        <a className="nav-link nav-font-dark tab-item" aria-current="page" href="#">
                             <EditableItem
                                 item={lesson}
                                 deleteItem={deleteLesson}
@@ -24,7 +24,7 @@ const LessonTabs = (
                 )
             }
             <li className="nav-item">
-                <a className="nav-link nav-font-dark" href="#">
+                <a className="nav-link nav-font-dark tab-item" href="#">
                     <i onClick={createLesson} className="fa fa-plus" />
                 </a>
             </li>

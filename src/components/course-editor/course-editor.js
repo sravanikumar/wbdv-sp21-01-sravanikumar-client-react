@@ -54,7 +54,7 @@ const CourseEditor = ({history}) =>
                 {/*        </div>*/}
                 {/*    </div>*/}
                 {/*</div>*/}
-                <div className="row">
+                <div className="row black-background nav-font-dark">
                     <div className="col-4">
                         <i onClick={() => history.goBack()}
                            className="fas fa-times fa-2x"></i>
