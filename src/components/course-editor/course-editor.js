@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useParams, Route} from 'react-router-dom'
 import "../custom-styling.css"
 import moduleReducer from "../../reducers/module-reducer";
 import {combineReducers, createStore} from "redux";
@@ -52,9 +52,18 @@ const CourseEditor = ({history, params}) => {
                         </div>
                     </div>
                     <div className="col-8 lightblue-background">
-                        <LessonTabs/>
+                        <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                               exact={true}>
+                            <LessonTabs/>
+                        </Route>
                         <br/>
-                        <TopicPills/>
+                        <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                               exact={true}>
+                            <TopicPills/>
+                        </Route>
                     </div>
                 </div>
             </div>
