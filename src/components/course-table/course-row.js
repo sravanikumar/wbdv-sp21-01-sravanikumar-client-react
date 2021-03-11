@@ -61,7 +61,7 @@ const CourseRow = (
                 !editing &&
                 <div>
 
-                    <Link to="/courses/editor">
+                    <Link to={`/courses/table/edit/${course._id}`}>
                         <i className="fa fa-folder"></i>
                         {course.title}
                     </Link>

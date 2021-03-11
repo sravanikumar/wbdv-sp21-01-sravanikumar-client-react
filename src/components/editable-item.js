@@ -17,9 +17,12 @@ const EditableItem = (
                 !editing &&
                 <>
                     <Link to={to}>
-                        <span className="nav-font-dark">{item.title}</span>
+                        <span className="nav-font-dark">
+                            {item.title}
+                        </span>
                     </Link>
-                    <i onClick={() => setEditing(true)} className="fas fa-edit nav-font-dark fa-pull-right"></i>
+                    <i onClick={() => setEditing(true)}
+                       className="fas fa-edit nav-font-dark fa-pull-right"></i>
                 </>
             }
             {

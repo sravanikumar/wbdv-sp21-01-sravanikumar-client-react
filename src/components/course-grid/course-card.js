@@ -43,7 +43,8 @@ const CourseCard = (
 
                         <p className="card-text">Some description.</p>
 
-                        <Link to="/courses/editor" className="btn btn-primary">
+                        <Link to={`/courses/grid/edit/${course._id}`}
+                              className="btn btn-primary">
                             {course.title}
                         </Link>
                         <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right icon-margins"></i>

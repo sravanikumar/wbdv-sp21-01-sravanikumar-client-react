@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import "../custom-styling.css"
 import EditableItem from "../editable-item";
+import {useParams} from 'react-router-dom'
 
 const ModuleList = (
     {
@@ -9,8 +10,9 @@ const ModuleList = (
         createModule,
         updateModule,
         deleteModule
-    }) =>
-    <div>
+    }) => {
+    const {layout, courseId, moduleId, lessonId, topicId} = useParams()
+    return (<div>
         {/*<h2>Module List</h2>*/}
         <ul className="nav flex-sm-column nav-pills nav-justified">
             {
@@ -19,6 +21,7 @@ const ModuleList = (
                     <li className="nav-item nav-item-editor">
                         <a className="nav-link nav-font-dark" aria-current="page" href="#">
                             <EditableItem
+                                to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                                 item={module}
                                 updateItem={updateModule}
                                 deleteItem={deleteModule}/>
@@ -28,11 +31,12 @@ const ModuleList = (
             }
             <li className="nav-item nav-item-editor">
                 <a className="nav-link nav-font-dark" aria-current="page" href="#">
-                    <i onClick={createModule} className="fa fa-plus" />
+                    <i onClick={createModule} className="fa fa-plus"/>
                 </a>
             </li>
         </ul>
-    </div>
+    </div>)
+}
 
 const stpm = (state) => ({
   modules: state.moduleReducer.modules
