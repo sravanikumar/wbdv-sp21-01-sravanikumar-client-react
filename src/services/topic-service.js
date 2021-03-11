@@ -31,6 +31,11 @@ export const deleteTopic = (topicId) =>
     })
         .then(response => response.json());
 
+function findTopic(topicId) {
+    return fetch(`${TOPICS_URL}/${topicId}`)
+        .then(response => response.json())
+}
+
 export default {
-    findTopicsForLesson, createTopic, updateTopic, deleteTopic
+    findTopicsForLesson, createTopic, updateTopic, deleteTopic, findTopic
 }

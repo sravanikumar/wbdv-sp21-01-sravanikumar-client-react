@@ -31,6 +31,11 @@ export const deleteLesson = (lessonId) =>
     })
         .then(response => response.json());
 
+function findLesson(lessonId) {
+    return fetch(`${LESSONS_URL}/${lessonId}`)
+        .then(response => response.json())
+}
+
 export default {
-    findLessonsForModule, createLessonForModule, updateLesson, deleteLesson
+    findLessonsForModule, createLessonForModule, updateLesson, deleteLesson, findLesson
 }

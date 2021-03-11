@@ -31,8 +31,13 @@ export const deleteModule = (moduleId) =>
     })
         .then(response => response.json());
 
+function findModule(moduleId) {
+    return fetch(`${MODULES_URL}/${moduleId}`)
+        .then(response => response.json())
+}
+
 const api = {
-    createModule, findModulesForCourse, deleteModule, updateModule
+    createModule, findModulesForCourse, deleteModule, updateModule, findModule
 }
 
 export default api;
