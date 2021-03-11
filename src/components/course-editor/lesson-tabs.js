@@ -50,7 +50,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
     createLesson: (moduleId) => {
-        console.log(moduleId + "create lesson")
+        // console.log(moduleId + "create lesson")
         lessonService.createLessonForModule(moduleId, {title: "New Lesson"})
             .then(lesson => dispatch({
                 type: "CREATE_LESSON",
