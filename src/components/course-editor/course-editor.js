@@ -10,6 +10,7 @@ import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
 import courseService from "../../services/course-service"
+import WidgetList from "../widgets/widget-list";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -54,15 +55,23 @@ const CourseEditor = ({history, params}) => {
                     <div className="col-8 lightblue-background">
                         <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
-                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
                                exact={true}>
                             <LessonTabs/>
                         </Route>
                         <br/>
                         <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
-                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
                                exact={true}>
                             <TopicPills/>
+                        </Route>
+                        <br/>
+                        <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
+                               exact={true}>
+                            <WidgetList/>
                         </Route>
                     </div>
                 </div>
