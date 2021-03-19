@@ -15,6 +15,15 @@ export const findWidgetsForTopic = (topicId) =>
     fetch(`${TOPICS_URL}/${topicId}/widgets`)
         .then(response => response.json())
 
+export const findAllWidgets = () =>
+    fetch(WIDGETS_URL)
+        .then(response => response.json())
+
+export const findWidgetById = (widgetId) => {
+    return fetch(`${WIDGETS_URL}/${widgetId}`)
+        .then(response => response.json())
+}
+
 export const updateWidget = (widgetId, widget) =>
     fetch(`${WIDGETS_URL}/${widgetId}`, {
         method: "PUT",
@@ -31,11 +40,6 @@ export const deleteWidget = (widgetId) =>
     })
         .then(response => response.json());
 
-function findWidget(widgetId) {
-    return fetch(`${WIDGETS_URL}/${widgetId}`)
-        .then(response => response.json())
-}
-
 export default {
-    findWidgetsForTopic, createWidget, updateWidget, deleteWidget, findWidget
+    findWidgetsForTopic, createWidget, updateWidget, deleteWidget, findWidgetById, findAllWidgets
 }
