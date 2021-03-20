@@ -1,24 +1,25 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
-const ParagraphWidget = ({widget, updateWidget, deleteWidget, to}) => {
+const ParagraphWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
     const [editing, setEditing] = useState(false)
     const [widgetCache, setWidgetCache] = useState(widget)
-    return (<div>
-        {/*<h2>*/}
-        {/*    Paragraph Widget {widget.id}*/}
+    return (
+        <div>
         {
             editing &&
                 <div>
-                    <i onClick={() => {
-                        setEditing(false)
-                        updateWidget(widgetCache)
-                    }} className="fas fa-check float-right"></i>
+                    <Link to={back}>
+                        <i onClick={() => {
+                            setEditing(false)
+                            updateWidget(widgetCache)
+                        }} className="fas fa-check float-right"></i>
 
-                    <i onClick={() => {
-                        setEditing(false)
-                        deleteWidget(widget)
-                    }} className="fas fa-trash float-right"></i>
+                        <i onClick={() => {
+                            setEditing(false)
+                            deleteWidget(widget)
+                        }} className="fas fa-trash float-right"></i>
+                    </Link>
                     <textarea
                         onChange={(e) => setWidgetCache({...widgetCache, text: e.target.value})}
                         value={widgetCache.text}
@@ -31,14 +32,13 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget, to}) => {
                 <Link to={to}>
                     <i onClick={() => setEditing(true)} className="fas fa-cog float-right"></i>
                 </Link>
-                {/*<i onClick={() => setEditing(true)} className="fas fa-cog float-right"></i>*/}
                 <p>
                     {widget.text}
                 </p>
             </div>
         }
-        {/*</h2>*/}
-    </div>)
+    </div>
+    )
 }
 
 export default ParagraphWidget

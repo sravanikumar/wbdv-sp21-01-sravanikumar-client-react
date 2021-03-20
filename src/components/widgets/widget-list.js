@@ -56,6 +56,7 @@ const WidgetList = (
                                 updateWidget={updateWidget}
                                 deleteWidget={deleteWidget}
                                 widget={widget}
+                                back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.id}`}
                                 />
                         }
