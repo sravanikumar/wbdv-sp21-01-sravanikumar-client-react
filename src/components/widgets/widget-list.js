@@ -24,7 +24,9 @@ const WidgetList = (
     }, [topicId])
 
     return (<div>
-        {/*<h1>Widget List</h1>*/}
+        <i onClick={() => createWidget(topicId)}
+           className="fas fa-plus fa-2x float-right"></i>
+        <br/>
         <ul className="list-group">
             {
                 widgets.map(widget =>
@@ -64,7 +66,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
     createWidget: (topicId) => {
-        widgetServices.createWidget(topicId, {text: "New Widget"})
+        widgetServices.createWidget(topicId, {text: "New Widget", type: "HEADING", size: 2})
             .then(widget => dispatch({
                 type: "CREATE_WIDGET",
                 widget
