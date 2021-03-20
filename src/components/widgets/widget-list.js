@@ -14,12 +14,10 @@ const WidgetList = (
         deleteWidget
     }) => {
     const {layout, courseId, moduleId, lessonId, topicId, widgetId} = useParams()
-    // console.log(widgetId)
-    // const [widget, setWidget] = useState({})
 
     useEffect(() => {
         if(topicId !== "undefined" && typeof topicId !== "undefined") {
-            findWidgetsForTopic("ABC234")
+            findWidgetsForTopic(topicId)
         }
     }, [topicId])
 
@@ -66,7 +64,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
     createWidget: (topicId) => {
-        widgetServices.createWidget(topicId, {text: "New Widget", type: "HEADING", size: 2})
+        widgetServices.createWidget(topicId, {text: "New Widget", type: "HEADING", size: 1})
             .then(widget => dispatch({
                 type: "CREATE_WIDGET",
                 widget
