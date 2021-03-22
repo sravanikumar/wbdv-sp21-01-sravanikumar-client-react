@@ -1,5 +1,5 @@
-const TOPICS_URL = "https://wbdv-sp21-sravani-server-java.herokuapp.com/api/topics"//"http://localhost:8080/api/topics"
-const WIDGETS_URL = "https://wbdv-sp21-sravani-server-java.herokuapp.com/api/widgets" //"http://localhost:8080/api/widgets"
+const TOPICS_URL = process.env.REACT_APP_TOPICS_URL //"http://localhost:8080/api/topics" //"https://wbdv-sp21-sravani-server-java.herokuapp.com/api/topics"//
+const WIDGETS_URL = process.env.REACT_APP_WIDGETS_URL   //"http://localhost:8080/api/widgets" //"https://wbdv-sp21-sravani-server-java.herokuapp.com/api/widgets" //
 
 export const createWidget = (topicId, widget) =>
     fetch(`${TOPICS_URL}/${topicId}/widgets`, {
