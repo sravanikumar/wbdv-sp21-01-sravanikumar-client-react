@@ -13,14 +13,14 @@ const WidgetList = (
         updateWidget,
         deleteWidget
     }) => {
-    const {layout, courseId, moduleId, lessonId, topicId, widgetId} = useParams()
+    const {layout, courseId, moduleId, lessonId, topicId, widgetType, widgetId} = useParams()
 
     useEffect(() => {
         if(topicId !== "undefined" && typeof topicId !== "undefined") {
             findWidgetsForTopic(topicId)
         }
     }, [topicId])
-
+    console.log(widgetType)
     return (<div>
         <i onClick={() => createWidget(topicId)}
            className="fas fa-plus fa-2x float-right"></i>
@@ -36,7 +36,7 @@ const WidgetList = (
                                 deleteWidget={deleteWidget}
                                 widget={widget}
                                 back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
-                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.id}`}
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.type}/${widget.id}`}
                             />
                         }
 
@@ -47,7 +47,7 @@ const WidgetList = (
                                 deleteWidget={deleteWidget}
                                 widget={widget}
                                 back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
-                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.id}`}
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.type}/${widget.id}`}
                                 />
                         }
 

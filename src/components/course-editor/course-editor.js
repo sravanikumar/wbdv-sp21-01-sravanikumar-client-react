@@ -58,20 +58,20 @@ const CourseEditor = ({history, params}) => {
                         <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
-                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetType/:widgetId"]}
                                exact={true}>
                             <LessonTabs/>
                         </Route>
                         <br/>
                         <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
-                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetType/:widgetId"]}
                                exact={true}>
                             <TopicPills/>
                         </Route>
                         <br/>
                         <Route path={["/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
-                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
+                            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetType/:widgetId"]}
                                exact={true}>
                             <WidgetList/>
                         </Route>
