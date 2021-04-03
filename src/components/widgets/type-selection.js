@@ -3,7 +3,8 @@ import React from 'react'
 const TypeSelection = ({widgetCache, setWidgetCache}) =>
     <>
         <select onChange={(e) => {
-                if (e.target.value === "HEADING" || e.target.value === "PARAGRAPH") {
+                if (e.target.value === "HEADING" || e.target.value === "PARAGRAPH"
+                    || e.target.value === "LIST" || e.target.value === "IMAGE") {
                     setWidgetCache({...widgetCache, type : e.target.value})
                 } else {
                     alert("Widget type not yet supported!")

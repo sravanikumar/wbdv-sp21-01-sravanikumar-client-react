@@ -4,6 +4,8 @@ import ParagraphWidget from "./paragraph-widget";
 import HeadingWidget from "./heading-widget";
 import widgetServices from "../../services/widget-service";
 import {connect} from "react-redux";
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
@@ -49,6 +51,28 @@ const WidgetList = (
                                 back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.type}/${widget.id}`}
                                 />
+                        }
+
+                        {
+                            widget.type === "LIST" &&
+                            <ListWidget
+                                updateWidget={updateWidget}
+                                deleteWidget={deleteWidget}
+                                widget={widget}
+                                back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.type}/${widget.id}`}
+                            />
+                        }
+
+                        {
+                            widget.type === "IMAGE" &&
+                            <ImageWidget
+                                updateWidget={updateWidget}
+                                deleteWidget={deleteWidget}
+                                widget={widget}
+                                back={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`}
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${widget.type}/${widget.id}`}
+                            />
                         }
 
                     </li>
