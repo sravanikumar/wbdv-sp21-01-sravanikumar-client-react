@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
+import TypeSelection from "./type-selection";
 
 const ImageWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
     const [editing, setEditing] = useState(false)
@@ -11,12 +12,17 @@ const ImageWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
                 editing &&
                 <div className="row">
                     <div className="col-11">
-                        URL
-                        <input value={widget.url} className="form-control"/>
-                        width
-                        <input value={widget.width} className="form-control"/>
-                        height
-                        <input value={widget.height} className="form-control"/>
+                        <TypeSelection widgetCache={widgetCache} setWidgetCache={setWidgetCache}/>
+                        <br/>
+                        Image URL
+                        <input value={widgetCache.src} className="form-control"
+                               onChange={(e) => setWidgetCache({...widgetCache, src: e.target.value})}/>
+                        Width (in pixels)
+                        <input value={widgetCache.width} className="form-control"
+                               onChange={(e) => setWidgetCache({...widgetCache, width: parseInt(e.target.value)})}/>
+                        Height (in pixels)
+                        <input value={widgetCache.height} className="form-control"
+                               onChange={(e) => setWidgetCache({...widgetCache, height: parseInt(e.target.value)})}/>
                     </div>
                     <div className="col-1">
                         <Link to={back}>
