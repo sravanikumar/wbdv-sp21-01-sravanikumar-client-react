@@ -6,7 +6,8 @@ const ListWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
     const [editing, setEditing] = useState(false)
     const [widgetCache, setWidgetCache] = useState(widget)
     // const [ordered, setOrdered] = useState(Boolean(widgetCache.ordered))
-    console.log(widgetCache)
+    // console.log(widgetCache)
+    let count = 0
     return (
         <div>
             {
@@ -16,7 +17,7 @@ const ListWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
                         widgetCache && widgetCache.text && widgetCache.ordered &&
                         <div className="row">
                             <div className="col-11">
-                                <ol>
+                                <ol key={count++}>
                                     {
                                         widgetCache.text.split("\n").map(item => {
                                             return(
@@ -38,7 +39,7 @@ const ListWidget = ({widget, updateWidget, deleteWidget, to, back}) => {
                         widgetCache && widgetCache.text && !widgetCache.ordered &&
                         <div className="row">
                             <div className="col-11">
-                                <ul>
+                                <ul key={count++}>
                                     {
                                         widgetCache.text.split("\n").map(item => {
                                             return(
