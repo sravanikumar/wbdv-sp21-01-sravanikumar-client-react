@@ -13,7 +13,7 @@ const QuizzesList = () => {
 
     return(
         <div>
-            <h1>Quizzes List</h1>
+            <h1>Quizzes</h1>
             <div className="list-group">
                 {
                     quizzes.map((quiz) => {
