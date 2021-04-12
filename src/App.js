@@ -3,17 +3,25 @@ import CourseManager from "./components/course-manager/course-manager";
 import Home from "./components/home"
 import {BrowserRouter, Route} from "react-router-dom";
 import CourseEditor from "./components/course-editor/course-editor";
+import QuizzesList from "./components/quizzes/quizzes-list";
 
 function App() {
   return (
       <BrowserRouter>
           <div className="container-fluid">
+
               <Route path="/" exact={true}>
                   <Home/>
               </Route>
+
               <Route path={["/courses", "/courses/table", "/courses/grid"]} exact={true}>
                   <CourseManager/>
               </Route>
+
+              <Route path={["/courses/:courseId/quizzes"]} exact={true}>
+                  <QuizzesList/>
+              </Route>
+
               <Route path={["/courses/:layout/edit",
                             "/courses/:layout/edit/:courseId",
                             "/courses/:layout/edit/:courseId/modules/:moduleId",

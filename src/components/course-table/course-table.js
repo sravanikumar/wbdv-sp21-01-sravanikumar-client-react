@@ -25,6 +25,9 @@ export default class CourseTable extends React.Component {
                         <div className="col d-none d-lg-block">
                             Last Modified
                         </div>
+                        <div className="col d-none d-lg-block">
+                            Quizzes
+                        </div>
                         <div className="col">
                             <Link to="/courses/grid">
                                 <i className="fas fa-2x fa-th float-right icon-margins"></i>

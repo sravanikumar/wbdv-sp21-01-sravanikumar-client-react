@@ -75,12 +75,22 @@ const CourseRow = (
                     className="form-control"/>
             }
         </div>
+
         <div className="list-group-item course-item-middle col d-none d-md-block">
             {course.owner}
         </div>
+
         <div className="list-group-item course-item-middle col d-none d-lg-block">
             {course.lastModified}
         </div>
+
+        <div className="list-group-item course-item-middle col d-none d-lg-block">
+            <Link
+                  to={`/courses/${course._id}/quizzes`}>
+                Quizzes
+            </Link>
+        </div>
+
         <div className="list-group-item course-item-right col">
             <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right icon-margins"></i>
             {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right icon-margins"></i>}
