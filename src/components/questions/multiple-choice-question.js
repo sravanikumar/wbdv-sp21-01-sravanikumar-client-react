@@ -13,7 +13,7 @@ const MultipleChoiceQuestion = ({question}) => {
                     graded && curChoice === question.correct &&
                     <span>
                             &nbsp;
-                        <i className="fas fa-check"></i>
+                        <i className="fas fa-check icon-green"></i>
                         </span>
 
                 }
@@ -22,7 +22,7 @@ const MultipleChoiceQuestion = ({question}) => {
                     graded && curChoice !== question.correct &&
                     <span>
                             &nbsp;
-                        <i className="fas fa-times"></i>
+                        <i className="fas fa-times icon-red"></i>
                         </span>
 
                 }
