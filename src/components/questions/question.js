@@ -6,7 +6,6 @@ const Question = ({question}) => {
 
     return(
         <div>
-            <div className="list-group-item">
                 {
                     question.type === "TRUE_FALSE" &&
                     <TrueFalseQuestion
@@ -17,7 +16,6 @@ const Question = ({question}) => {
                     <MultipleChoiceQuestion
                         question={question}/>
                 }
-            </div>
         </div>
     )
 }

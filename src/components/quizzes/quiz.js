@@ -6,7 +6,7 @@ import Question from "../questions/question";
 
 const Quiz = () => {
     const [questions, setQuestions] = useState([])
-    const [quiz, setQuiz] = useState("")
+    const [quiz, setQuiz] = useState({})
     const {courseId, quizId} = useParams()
 
     useEffect(() => {
@@ -16,17 +16,20 @@ const Quiz = () => {
             .then(quiz => setQuiz(quiz))
     }, [])
 
-    return(
+    return (
         <div>
-           <h2>
-               {quiz.title}
-           </h2>
+            <h2>
+                {quiz.title}
+            </h2>
             <div className="list-group">
                 {
                     questions.map((question) => {
-                       return(
-                           <Question question={question}/>
-                       )})
+                        return (
+                            <div key={question._id} className="list-group-item">
+                                <Question question={question}/>
+                            </div>
+                        )
+                    })
                 }
             </div>
         </div>
