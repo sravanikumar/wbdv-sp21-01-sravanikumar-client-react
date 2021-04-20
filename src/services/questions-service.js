@@ -6,6 +6,5 @@ const findQuestionsForQuiz = (qid) => {
 }
 
 export default {
-    findQuestionsForQuiz,
-    submitQuiz
+    findQuestionsForQuiz
 }
