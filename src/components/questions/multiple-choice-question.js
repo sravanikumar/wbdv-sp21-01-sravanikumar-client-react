@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classNames from "classnames";
 
-const MultipleChoiceQuestion = ({question, graded}) => {
+const MultipleChoiceQuestion = ({question, graded, updateQuestion}) => {
     const [curChoice, setCurChoice] = useState("")
     // const [graded, setGraded] = useState(false)
 
@@ -38,7 +38,10 @@ const MultipleChoiceQuestion = ({question, graded}) => {
                                 })}>
                                 <label><input
                                     type="radio"
-                                    onClick={() => setCurChoice(choice)}
+                                    onClick={() => {
+                                        setCurChoice(choice)
+                                        updateQuestion({...question, answer: choice})
+                                    }}
                                     name={question._id}/>{choice}</label>
                             </div>
                         )

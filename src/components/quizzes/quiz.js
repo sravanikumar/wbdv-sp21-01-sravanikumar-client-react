@@ -13,7 +13,8 @@ const Quiz = (
         findQuestionsForQuiz,
         findQuizById,
         findAllQuizzes,
-        submitQuiz
+        submitQuiz,
+        updateQuestion
     }) => {
 
     // const [questions, setQuestions] = useState([])
@@ -44,7 +45,9 @@ const Quiz = (
                     questions.map((question) => {
                         return (
                             <div key={question._id} className="list-group-item">
-                                <Question question={question} graded={graded}/>
+                                <Question question={question}
+                                          graded={graded}
+                                          updateQuestion={updateQuestion}/>
                             </div>
                         )
                     })
@@ -101,7 +104,12 @@ const dtpm = (dispatch) => ({
                 type: "SUBMIT_QUIZ",
                 quizAttempt: quizAttempt
             }))
-    }
+        console.log("submit", questions)
+    },
+    updateQuestion: (question) => dispatch({
+        type: "UPDATE_QUESTION",
+        question: question
+    })
 })
 
 export default connect(stpm, dtpm)(Quiz)

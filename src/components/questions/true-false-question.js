@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classNames from "classnames";
 
-const TrueFalseQuestion = ({question, graded}) => {
+const TrueFalseQuestion = ({question, graded, updateQuestion}) => {
     const [curChoice, setCurChoice] = useState("")
     // const [graded, setGraded] = useState(false)
 
@@ -34,7 +34,11 @@ const TrueFalseQuestion = ({question, graded}) => {
                         "list-group-item-danger" : graded && curChoice !== question.correct && curChoice === "true"})}>
                     <label><input
                         type="radio"
-                        onClick={() => setCurChoice("true")}
+                        onClick={() => {
+                            setCurChoice("true")
+                            updateQuestion({...question, answer:"true"})
+                            // console.log("updated answer", question)
+                        }}
                         name={question._id}/>True</label>
                 </div>
                 <div className={classNames("list-group-item",
@@ -43,7 +47,11 @@ const TrueFalseQuestion = ({question, graded}) => {
                         )}>
                     <label><input
                         type="radio"
-                        onClick={() => setCurChoice("false")}
+                        onClick={() => {
+                            setCurChoice("false")
+                            updateQuestion({...question, answer:"false"})
+                            // console.log("updated answer", question)
+                        }}
                         name={question._id}/>False</label>
                 </div>
             </div>

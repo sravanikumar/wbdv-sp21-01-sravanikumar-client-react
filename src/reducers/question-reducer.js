@@ -9,6 +9,17 @@ const questionReducer = (state = initialState, action) => {
                 ...state,
                 questions: action.questions
             }
+        case "UPDATE_QUESTION":
+            return {
+                ...state,
+                questions: state.questions.map(question => {
+                    if(question._id === action.question._id) {
+                        return action.question
+                    } else {
+                        return question
+                    }
+                })
+            }
         default:
             return state
 
