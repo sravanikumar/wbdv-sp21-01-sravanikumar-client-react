@@ -34,7 +34,7 @@ const QuizAttempts = (
                 {
                     quizAttempts.map((attempt, index) =>
                         <div className="list-group-item" key={index}>
-                            <h5>{`Attempt #${index + 1}`}</h5>
+                            <h5>Attempt #{index + 1}</h5>
                             <h5>Score: {Math.round(attempt.score)}%</h5>
                             <div className="list-group">
                                 {

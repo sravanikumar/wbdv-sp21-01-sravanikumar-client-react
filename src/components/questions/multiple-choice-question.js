@@ -10,7 +10,7 @@ const MultipleChoiceQuestion = ({question, graded, updateQuestion}) => {
             <h4>
                 {question.question}
                 {
-                    graded && curChoice === question.correct &&
+                    graded && question.answer === question.correct &&
                     <span>
                             &nbsp;
                         <i className="fas fa-check icon-green"></i>
@@ -19,7 +19,7 @@ const MultipleChoiceQuestion = ({question, graded, updateQuestion}) => {
                 }
 
                 {
-                    graded && curChoice !== question.correct &&
+                    graded && question.answer !== question.correct &&
                     <span>
                             &nbsp;
                         <i className="fas fa-times icon-red"></i>
@@ -34,7 +34,7 @@ const MultipleChoiceQuestion = ({question, graded, updateQuestion}) => {
                             <div key={index} className={classNames("list-group-item",
                                 {
                                     "list-group-item-success": graded && choice === question.correct,
-                                    "list-group-item-danger": graded && curChoice !== question.correct && choice === curChoice
+                                    "list-group-item-danger": graded && question.answer !== question.correct && choice === curChoice
                                 })}>
                                 <label><input
                                     type="radio"
@@ -50,7 +50,7 @@ const MultipleChoiceQuestion = ({question, graded, updateQuestion}) => {
             </div>
             <br/>
             <div>
-                <h6>Your Answer: {curChoice}</h6>
+                <h6>Your Answer: {question.answer}</h6>
                 {/*<button className="btn btn-primary"*/}
                 {/*        onClick={() => setGraded(true)}>*/}
                 {/*    Grade*/}

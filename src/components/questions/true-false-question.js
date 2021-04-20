@@ -31,7 +31,7 @@ const TrueFalseQuestion = ({question, graded, updateQuestion}) => {
             <div className="list-group">
                 <div className={classNames("list-group-item",
                     {"list-group-item-success": graded && 'true' === question.correct,
-                        "list-group-item-danger" : graded && curChoice !== question.correct && curChoice === "true"})}>
+                        "list-group-item-danger" : graded && question.answer !== question.correct && curChoice === "true"})}>
                     <label><input
                         type="radio"
                         onClick={() => {
@@ -43,7 +43,7 @@ const TrueFalseQuestion = ({question, graded, updateQuestion}) => {
                 </div>
                 <div className={classNames("list-group-item",
                     {"list-group-item-success": graded && 'false' === question.correct,
-                        "list-group-item-danger" : graded && curChoice !== question.correct && curChoice === "false"}
+                        "list-group-item-danger" : graded && question.answer !== question.correct && curChoice === "false"}
                         )}>
                     <label><input
                         type="radio"
@@ -57,7 +57,7 @@ const TrueFalseQuestion = ({question, graded, updateQuestion}) => {
             </div>
             <br/>
             <div>
-                <h6>Your Answer: {curChoice}</h6>
+                <h6>Your Answer: {question.answer}</h6>
                 {/*<button className="btn btn-primary"*/}
                 {/*        onClick={() => setGraded(true)}>*/}
                 {/*    Grade*/}
