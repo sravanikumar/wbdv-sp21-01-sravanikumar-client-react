@@ -27,8 +27,7 @@ const QuizzesList = (
                                 <Link to={`/courses/${courseId}/quizzes/${quiz._id}`}>
                                     {quiz.title}
                                 </Link>
-                                <Link className="btn btn-primary float-right" to="/#">
-                                    {/*TODO: change href here to quiz attempts*/}
+                                <Link className="btn btn-primary float-right" to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}>
                                     Attempts
                                 </Link>
                             </div>

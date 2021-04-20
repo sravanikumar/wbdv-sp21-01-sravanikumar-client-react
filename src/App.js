@@ -10,6 +10,7 @@ import {Provider} from "react-redux";
 import quizReducer from "./reducers/quiz-reducer";
 import questionReducer from "./reducers/question-reducer";
 import quizAttemptReducer from "./reducers/quiz-attempt-reducer";
+import QuizAttempts from "./components/quizzes/quiz-attempts";
 
 const reducer = combineReducers({
     quizReducer: quizReducer,
@@ -40,6 +41,10 @@ function App() {
 
                   <Route path={["/courses/:courseId/quizzes/:quizId"]} exact={true}>
                       <Quiz/>
+                  </Route>
+
+                  <Route path={["/courses/:courseId/quizzes/:quizId/attempts"]} exact={true}>
+                      <QuizAttempts/>
                   </Route>
 
                   <Route path={["/courses/:layout/edit",

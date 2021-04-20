@@ -25,7 +25,7 @@ const Quiz = (
     useEffect(() => {
         if (quizId !== "undefined" && typeof quizId !== "undefined") {
             findQuestionsForQuiz(quizId)
-            console.log("after", questions)
+            // console.log("after", questions)
             findAllQuizzes()
             const curQuiz = quizzes.find(quiz => quiz._id === quizId)
             setQuiz(curQuiz)
@@ -74,7 +74,7 @@ const dtpm = (dispatch) => ({
     findQuestionsForQuiz: (quizId) => {
         questionsService.findQuestionsForQuiz(quizId)
             .then(questions => {
-                console.log("dispatch", questions)
+                // console.log("dispatch", questions)
                 return (dispatch({
                     type: "FIND_QUESTIONS_FOR_QUIZ",
                     questions: questions
@@ -104,7 +104,7 @@ const dtpm = (dispatch) => ({
                 type: "SUBMIT_QUIZ",
                 quizAttempt: quizAttempt
             }))
-        console.log("submit", questions)
+        // console.log("submit", questions)
     },
     updateQuestion: (question) => dispatch({
         type: "UPDATE_QUESTION",
