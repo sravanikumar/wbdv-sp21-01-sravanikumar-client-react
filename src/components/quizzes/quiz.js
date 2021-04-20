@@ -2,18 +2,36 @@ import React, {useState, useEffect} from "react";
 import {useParams} from 'react-router-dom'
 import questionsService from '../../services/questions-service'
 import quizService from '../../services/quizzes-service'
+import quizAttemptService from '../../services/quiz-attempts-service'
 import Question from "../questions/question";
+import {connect} from "react-redux";
 
-const Quiz = () => {
-    const [questions, setQuestions] = useState([])
-    const [quiz, setQuiz] = useState({})
+const Quiz = (
+    {
+        questions = [],
+        quizzes = [],
+        findQuestionsForQuiz,
+        findQuizById,
+        findAllQuizzes,
+        submitQuiz
+    }) => {
+
+    // const [questions, setQuestions] = useState([])
+    const [quiz, setQuiz] = useState("")
+    const [graded, setGraded] = useState(false)
     const {courseId, quizId} = useParams()
 
     useEffect(() => {
-        questionsService.findQuestionsForQuiz(quizId)
-            .then(questions => setQuestions(questions))
-        quizService.findQuizById(quizId)
-            .then(quiz => setQuiz(quiz))
+        if (quizId !== "undefined" && typeof quizId !== "undefined") {
+            findQuestionsForQuiz(quizId)
+            console.log("after", questions)
+            findAllQuizzes()
+            const curQuiz = quizzes.find(quiz => quiz._id === quizId)
+            setQuiz(curQuiz)
+            // const quizCur = findQuizById(quizId)
+            // // console.log("from", findQuizById(quizId))
+            // setQuiz(quizCur)
+        }
     }, [])
 
     return (
@@ -26,14 +44,64 @@ const Quiz = () => {
                     questions.map((question) => {
                         return (
                             <div key={question._id} className="list-group-item">
-                                <Question question={question}/>
+                                <Question question={question} graded={graded}/>
                             </div>
                         )
                     })
                 }
+                <button className="btn btn-success"
+                        onClick={() => {
+                            setGraded(true)
+                            submitQuiz(quizId, questions)
+                        }}>
+                    Submit
+                </button>
             </div>
+
         </div>
     )
 }
 
-export default Quiz
+const stpm = (state) => ({
+    questions: state.questionReducer.questions,
+    quizzes: state.quizReducer.quizzes
+})
+
+const dtpm = (dispatch) => ({
+    findQuestionsForQuiz: (quizId) => {
+        questionsService.findQuestionsForQuiz(quizId)
+            .then(questions => {
+                console.log("dispatch", questions)
+                return (dispatch({
+                    type: "FIND_QUESTIONS_FOR_QUIZ",
+                    questions: questions
+                }))
+            })
+    },
+    findAllQuizzes: () => {
+      quizService.findAllQuizzes()
+          .then(quizzes => dispatch({
+              type: "FIND_ALL_QUIZZES",
+              quizzes: quizzes
+          }))
+    },
+    findQuizById: (quizId) => {
+        quizService.findQuizById(quizId)
+            .then(quiz => {
+                // console.log(quiz)
+                return (dispatch({
+                    type: "FIND_QUIZ_BY_ID",
+                    quiz: quiz
+                }))
+            })
+    },
+    submitQuiz: (quizId, questions) => {
+        quizAttemptService.submitQuiz(quizId, questions)
+            .then(quizAttempt => dispatch({
+                type: "SUBMIT_QUIZ",
+                quizAttempt: quizAttempt
+            }))
+    }
+})
+
+export default connect(stpm, dtpm)(Quiz)

@@ -9,7 +9,7 @@ const submitQuiz = (qzid, questions) => {
                 'content-type': 'application/json'
             }
         }).then(response => response.json())
-        .then(result => console.log(result))
+
 }
 
 const findAttemptsForQuiz = (qzid) => {

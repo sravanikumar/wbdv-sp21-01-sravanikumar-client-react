@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import classNames from "classnames";
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question, graded}) => {
     const [curChoice, setCurChoice] = useState("")
-    const [graded, setGraded] = useState(false)
+    // const [graded, setGraded] = useState(false)
 
     return(
         <div>
@@ -50,10 +50,10 @@ const TrueFalseQuestion = ({question}) => {
             <br/>
             <div>
                 <h6>Your Answer: {curChoice}</h6>
-                <button className="btn btn-primary"
-                        onClick={() => setGraded(true)}>
-                    Grade
-                </button>
+                {/*<button className="btn btn-primary"*/}
+                {/*        onClick={() => setGraded(true)}>*/}
+                {/*    Grade*/}
+                {/*</button>*/}
             </div>
 
         </div>

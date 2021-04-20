@@ -7,7 +7,7 @@ const questionReducer = (state = initialState, action) => {
         case 'FIND_QUESTIONS_FOR_QUIZ':
             return {
                 ...state,
-                quizzes: action.quizzes
+                questions: action.questions
             }
         default:
             return state
